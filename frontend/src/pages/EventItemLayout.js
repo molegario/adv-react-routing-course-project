@@ -8,13 +8,14 @@ function EventItemLayout() {
 
 export default EventItemLayout;
 
-export async function loader({ params }) {
+async function loadEvent(params) {
   try {
     const response = await fetch(`http://localhost:8080/events/${params.id}`);
     if (!response.ok) {
       throw new Error('Failed fetching event from backend service!');
     } else {
-      return response;
+      const data = await response.json();
+      return data.event;
     }
   } catch (error) {
     throw data(
@@ -26,4 +27,10 @@ export async function loader({ params }) {
       }
     );
   }
+}
+
+export async function loader({ params }) {
+  return {
+    event: loadEvent(params),
+  };
 }
