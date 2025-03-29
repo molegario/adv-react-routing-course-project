@@ -30,7 +30,7 @@ router.get('/:id', async (req, res, next) => {
       () => {
         res.json({ event: event });
       },
-      3500
+      100
     );
   } catch (error) {
     next(error);

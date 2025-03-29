@@ -1,4 +1,5 @@
 import { Outlet, data } from "react-router-dom";
+import { loadEvents } from "./Events";
 
 function EventItemLayout() {
   return <>
@@ -32,5 +33,6 @@ async function loadEvent(params) {
 export async function loader({ params }) {
   return {
     event: loadEvent(params),
+    events: loadEvents(),
   };
 }

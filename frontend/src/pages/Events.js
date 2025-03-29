@@ -24,7 +24,7 @@ function Events() {
 
 export default Events;
 
-async function loadEvents() {
+export async function loadEvents() {
   try {
     const response = await fetch(
       "http://localhost:8080/events"
